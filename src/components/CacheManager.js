@@ -1,6 +1,8 @@
 // @flow
 import * as _ from 'lodash';
 import {FileSystem} from 'expo-file-system';
+import SHA1 from 'crypto-js/sha1';
+
 
 const BASE_DIR = `${FileSystem.cacheDirectory}expo-image-cache/`;
 
@@ -57,8 +59,8 @@ const getCacheEntry = async (
     filename.indexOf('.') === -1
       ? '.jpg'
       : filename.substring(filename.lastIndexOf('.'));
-  const path = `${BASE_DIR}${btoa(uri)}${ext}`;
-  const tmpPath = `${BASE_DIR}${btoa(uri)}-${uniqueId()}${ext}`;
+  const path = `${BASE_DIR}${SHA1(uri)}${ext}`;
+  const tmpPath = `${BASE_DIR}${SHA1(uri)}-${uniqueId()}${ext}`;
   // TODO: maybe we don't have to do this every time
   try {
     await FileSystem.makeDirectoryAsync(BASE_DIR);
