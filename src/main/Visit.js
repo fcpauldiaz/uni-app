@@ -4,7 +4,7 @@ import {StyleSheet, View} from "react-native";
 
 import {Text, StyleGuide, withTheme, type ThemeProps, type StyleProps} from "../components";
 
-import {type Visit} from "../components/food/Model";
+import {type Visit} from "../components/detail/Model";
 
 type VisitProps = StyleProps & ThemeProps & {
     visit: Visit,

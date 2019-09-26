@@ -26,6 +26,7 @@
     "react-native-map-link": "^2.5.1",
     "react-native-maps": "^0.25.0",
     "react-native-reanimated": "~1.1.0",
+    "react-native-share": "^2.0.0",
     "react-native-status-bar-height": "^2.4.0",
     "react-native-svg": "^9.9.3",
     "react-native-unimodules": "~0.5.2",
@@ -33,7 +34,8 @@
     "react-native-web": "^0.11.5",
     "react-navigation": "^4.0.5",
     "react-navigation-stack": "^1.8.0",
-    "react-navigation-tabs": "^2.5.3"
+    "react-navigation-tabs": "^2.5.3",
+    "rn-fetch-blob": "^0.10.16"
   },
   "devDependencies": {
     "@babel/core": "^7.5.5",

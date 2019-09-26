@@ -26,6 +26,14 @@
                 "title": "Administración Aduanera y Comercio Exterior",
                 "years": 4,
                 "credits": 285,
+                "fb_page": "https://www.facebook.com/UNIZ4/",
+                "additional_info": [
+                    {
+                        "link": "https://uni.edu.gt/wp-content/uploads/2018/12/374AC-LicAdmAduaneraComercioExt2019-Uni.pdf",
+                        "name": "Ver Pensum"
+                    }
+                ],
+                "admission_link": "https://uni.edu.gt/programas-de-tecnico-profesional-licenciatura-o-ingenieria/",
                 "picture": {
                     "uri": "https://firebasestorage.googleapis.com/v0/b/react-native-e.appspot.com/o/hummus.jpeg?alt=media&token=86b00866-3989-492e-9206-9127bbd9745d",
                     "preview": "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAYABgAAD/4QCMRXhpZgAATU0AKgAAAAgABQESAAMAAAABAAEAAAEaAAUAAAABAAAASgEbAAUAAAABAAAAUgEoAAMAAAABAAIAAIdpAAQAAAABAAAAWgAAAAAAAABgAAAAAQAAAGAAAAABAAOgAQADAAAAAQABAACgAgAEAAAAAQAAAAqgAwAEAAAAAQAAAAcAAAAA/+0AOFBob3Rvc2hvcCAzLjAAOEJJTQQEAAAAAAAAOEJJTQQlAAAAAAAQ1B2M2Y8AsgTpgAmY7PhCfv/AABEIAAcACgMBIgACEQEDEQH/xAAfAAABBQEBAQEBAQAAAAAAAAAAAQIDBAUGBwgJCgv/xAC1EAACAQMDAgQDBQUEBAAAAX0BAgMABBEFEiExQQYTUWEHInEUMoGRoQgjQrHBFVLR8CQzYnKCCQoWFxgZGiUmJygpKjQ1Njc4OTpDREVGR0hJSlNUVVZXWFlaY2RlZmdoaWpzdHV2d3h5eoOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4eLj5OXm5+jp6vHy8/T19vf4+fr/xAAfAQADAQEBAQEBAQEBAAAAAAAAAQIDBAUGBwgJCgv/xAC1EQACAQIEBAMEBwUEBAABAncAAQIDEQQFITEGEkFRB2FxEyIygQgUQpGhscEJIzNS8BVictEKFiQ04SXxFxgZGiYnKCkqNTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqCg4SFhoeIiYqSk5SVlpeYmZqio6Slpqeoqaqys7S1tre4ubrCw8TFxsfIycrS09TV1tfY2dri4+Tl5ufo6ery8/T19vf4+fr/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0aHBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDL/2wBDAQkJCQwLDBgNDRgyIRwhMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjL/3QAEAAH/2gAMAwEAAhEDEQA/AN+C41a701YtImtpL9XIuJRH5RkXA2kEg4x0OeT1rVhtNPWCNbueGS5CgSuYW+Z8cngDvntVDwV/x8z/AENST/8AHxJ/vH+defUprndj0KseWbSZ/9k="
