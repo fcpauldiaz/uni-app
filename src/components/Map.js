@@ -2,7 +2,8 @@
 import * as React from 'react';
 import {View, StyleSheet} from 'react-native';
 import {LinearGradient} from 'expo-linear-gradient';
-import {MapView} from 'react-native-maps';
+import MapView from 'react-native-maps';
+import { Marker as RNMarker } from 'react-native-maps';
 
 import {withTheme} from './theme';
 
@@ -48,14 +49,15 @@ class Map extends React.Component<MapProps> {
   render(): React.Node {
     const {markers, height, theme} = this.props;
     return (
-      <View style={{height}}>
+      <View style={{ height }}>
         <MapView
           ref={this.setMapRef}
-          style={{height}}
+          style={{ height }}
           provider="google"
-          customMapStyle={mapStyle}>
+          customMapStyle={mapStyle}
+        >
           {markers.map(marker => (
-            <MapView.Marker
+            <RNMarker
               key={marker.id}
               coordinate={marker.coordinate}
               pinColor={theme.palette.primary}

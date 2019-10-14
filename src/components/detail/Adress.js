@@ -4,7 +4,7 @@ import { View, StyleSheet } from 'react-native';
 
 import { Text, Image, StyleGuide } from '../../components';
 
-import type { Location } from '../../components/food/Model';
+import type { Location } from '../../components/detail/Model';
 
 export default class Address extends React.PureComponent<{
   location: Location
