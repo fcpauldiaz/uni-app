@@ -74,7 +74,7 @@ export default class ActionSheet extends React.Component<ActionSheetProps, Actio
         });
         const translateY = animation.interpolate({
             inputRange: [0, 1],
-            outputRange: [height, 0]
+            outputRange: [height+50, 0]
         });
         return (
             <Modal onRequestClose={onRequestClose} transparent {...{visible}}>

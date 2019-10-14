@@ -1,6 +1,6 @@
 // @flow
 import * as _ from 'lodash';
-import {FileSystem} from 'expo-file-system';
+import * as FileSystem from 'expo-file-system';
 import SHA1 from 'crypto-js/sha1';
 
 

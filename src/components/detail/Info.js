@@ -50,7 +50,7 @@ const styles = StyleSheet.create({
   },
   content: {
     flexDirection: 'row',
-    height: 50
+    height: 40
   },
   subhead: {
     color: StyleGuide.palette.darkGray

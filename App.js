@@ -1,13 +1,19 @@
 // @flow
 import * as React from 'react';
-import {StatusBar, Platform} from 'react-native';
-import {createSwitchNavigator, createAppContainer} from 'react-navigation';
+import { StatusBar, Platform } from 'react-native';
+import { createSwitchNavigator, createAppContainer } from 'react-navigation';
+import { reducer } from './src/main/reducers/reducer';
 import * as Font from 'expo-font';
 
-import {Images, loadIcons, ThemeProvider} from './src/components';
+import {
+  Images,
+  loadIcons,
+  ThemeProvider,
+  StateProvider
+} from './src/components';
 
-import {Welcome} from './src/welcome';
-import {CareerNavigator} from './src/main';
+import { Welcome } from './src/welcome';
+import { CareerNavigator } from './src/main';
 
 // $FlowFixMe
 const SFProTextBold = require('./assets/fonts/SF-Pro-Text-Bold.otf');
@@ -20,16 +26,16 @@ const onNavigationStateChange = () => undefined;
 
 type AppProps = {};
 type AppState = {
-  isReady: boolean,
+  isReady: boolean
 };
 
 export default class App extends React.Component<AppProps, AppState> {
   state = {
-    isReady: false,
+    isReady: false
   };
 
   ready() {
-    this.setState({isReady: true});
+    this.setState({ isReady: true });
   }
 
   async componentDidMount(): Promise<void> {
@@ -53,7 +59,7 @@ export default class App extends React.Component<AppProps, AppState> {
   }
 
   render(): React.Node {
-    const {isReady} = this.state;
+    const { isReady } = this.state;
     if (!isReady) {
       return (
         <React.Fragment>
@@ -62,7 +68,6 @@ export default class App extends React.Component<AppProps, AppState> {
             backgroundColor="transparent"
             barStyle="dark-content"
           />
-          
         </React.Fragment>
       );
     }
@@ -73,17 +78,19 @@ export default class App extends React.Component<AppProps, AppState> {
           backgroundColor="transparent"
           barStyle="light-content"
         />
-        <ThemeProvider>
-          <AppNavigator {...{onNavigationStateChange}} />
-        </ThemeProvider>
+        <StateProvider reducer={reducer}>
+          <ThemeProvider>
+            <AppNavigator {...{ onNavigationStateChange }} />
+          </ThemeProvider>
+        </StateProvider>
       </React.Fragment>
     );
   }
 }
 
 const MainNavigator = createSwitchNavigator({
-  Welcome: {screen: Welcome},
-  Career: {screen: CareerNavigator},
+  Welcome: { screen: Welcome },
+  Career: { screen: CareerNavigator }
 });
 
 const AppNavigator = createAppContainer(MainNavigator);

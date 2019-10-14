@@ -24,23 +24,23 @@ import type { NavigationProps } from '../components';
 import type { Location } from '../components/detail/Model';
 
 export default class RestaurantComp extends React.Component<
-  NavigationProps<{ restaurant: Location }>
+  NavigationProps<{ location: Location }>
 > {
   // TODO: use createRef()
   reservation: ActionSheet;
 
   render(): React.Node {
     const { navigation } = this.props;
-    const { restaurant } = navigation.state.params;
-    const { ratings, title, picture, coordinate, description } = restaurant;
+    const { location } = navigation.state.params;
+    const { ratings, title, picture, coordinate, description } = location;
     const details = [
       {
         comp: <Ratings {...{ ratings }} />,
-        caption: `${restaurant.reviews} reviews`
+        caption: `${location.reviews} reviews`
       },
       {
         icon: 'time',
-        caption: `${restaurant.openings.from} - ${restaurant.openings.to}`
+        caption: `${location.openings.from} - ${location.openings.to}`
       }
     ];
     return (
@@ -52,7 +52,7 @@ export default class RestaurantComp extends React.Component<
         <Content>
           <Map
             height={250}
-            markers={[restaurant]}
+            markers={[location]}
             coordinate={
               coordinate || { latitude: 14.62419, longitude: -90.515359 }
             }
@@ -71,7 +71,7 @@ export default class RestaurantComp extends React.Component<
           </View>
         </Content>
         <ActionSheet title="Ubicación" ref={this.setReservationRef} scrollable>
-          <Adress {...{ restaurant }} />
+          <Adress {...{ location }} />
           <View style={styles.gutter}>
             <Button primary label="Abrir" onPress={this.openMaps} />
           </View>

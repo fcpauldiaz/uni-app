@@ -26,9 +26,25 @@ export default class Careers extends React.Component<NavigationProps<>> {
     navigation.navigate('Welcome');
   };
 
+  groupBy = (items, keyGetterFunction) =>
+    items.reduce(
+      (result, item) => ({
+        ...result,
+        [keyGetterFunction(item)]: [
+          ...(result[keyGetterFunction(item)] || []),
+          item
+        ]
+      }),
+      {}
+    );
+
   render(): React.Node {
-    const { renderItem, onPress } = this;
+    const { renderItem, onPress, groupBy } = this;
     const { navigation } = this.props;
+    console.log(navigation.getParam('data'));
+    const careers = navigation.getParam('data');
+    const groupedCareers = groupBy(careers, career => career.category.type);
+    console.log(groupedCareers);
     const data = FoodAPI.categories;
     const title = 'Carreras';
     const rightAction = {

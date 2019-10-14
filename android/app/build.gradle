@@ -173,6 +173,7 @@ android {
 }
 
 dependencies {
+    implementation project(':react-native-maps')
     implementation project(':react-native-share')
     implementation project(':rn-fetch-blob')
     implementation project(':react-native-reanimated')

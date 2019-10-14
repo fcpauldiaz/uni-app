@@ -31,6 +31,10 @@
                     {
                         "link": "https://uni.edu.gt/wp-content/uploads/2018/12/374AC-LicAdmAduaneraComercioExt2019-Uni.pdf",
                         "name": "Ver Pensum"
+                    },
+                    {
+                        "link": "https://uni.edu.gt/wp-content/uploads/2019/01/374AC-LicAdmAduaneraComercioExt2019-Cuotas-1.pdf",
+                        "name": "Ver Detalle de Cuotas"
                     }
                 ],
                 "admission_link": "https://uni.edu.gt/programas-de-tecnico-profesional-licenciatura-o-ingenieria/",
@@ -60,23 +64,6 @@
                         "body": "Inscripción Trimestral.............Q. 300.00 \n \n Cuota Mensual.............Q. 660.00"
                     }
                 ],
-                "ingredients": [
-                    {
-                        "checked": true,
-                        "name": "Chickpeas",
-                        "quantity": "15 ounces"
-                    },
-                    {
-                        "checked": true,
-                        "name": "Fresh lemon",
-                        "quantity": "1"
-                    },
-                    {
-                        "checked": false,
-                        "name": "Well-stirred tahini",
-                        "quantity": "¼ cup"
-                    }
-                ]
             },
         ]
     }
