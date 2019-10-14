@@ -35,18 +35,21 @@ export default class Career extends React.Component<
     this.setState({ email });
   }
 
+
+
   render(): React.Node {
     const { navigation } = this.props;
-    const { categoryId, recipeId } = navigation.state.params;
-    const category = FoodAPI.categories.filter(cat => categoryId === cat.id)[0];
-    const career = FoodAPI.careers[category.id].filter(
-      r => r.id === recipeId
-    )[0];
+    const { career } = navigation.state.params;
+    const category = career.category;
     const years = `${career.years} ${career.years > 1 ? 'años' : 'año'}`;
     const credits = `${career.credits} créditos`;
     return (
       <Container>
-        <Header title={career.title} picture={career.picture} heightRatio={0.5}>
+        <Header
+          title={career.title}
+          picture={career.picture.image.url}
+          heightRatio={0.5}
+        >
           <NavigationBar
             type="transparent"
             back={category.title}
@@ -66,12 +69,12 @@ export default class Career extends React.Component<
             onPress={this.toggleAdditionalInfoList}
           />
           <View style={styles.list}>
-            {career.instructions.map((visit, index) => (
+            {career.list_details.map((visit, index) => (
               <Visit
                 style={styles.separator}
                 key={index}
                 first={index === 0}
-                last={index === career.instructions.length - 1}
+                last={index === career.list_details.length - 1}
                 {...{ visit }}
               />
             ))}

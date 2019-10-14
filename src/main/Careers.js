@@ -9,13 +9,24 @@ import type { Category } from '../components/detail/Model';
 import type { NavigationProps } from '../components';
 
 export default class Careers extends React.Component<NavigationProps<>> {
+  state = {
+    data: [],
+    groupedCareers: {}
+  };
+
   renderItem = (category: Category): React.Node => {
     const { navigation } = this.props;
+    const picture = {
+      uri: category.picture.image.url
+    };
     return (
       <Card
         {...category}
+        picture={picture}
         onPress={() =>
-          navigation.navigate('Category', { categoryId: category.id })
+          navigation.navigate('Category', {
+            careers: this.state.groupedCareers[category.type]
+          })
         }
       />
     );
@@ -38,15 +49,42 @@ export default class Careers extends React.Component<NavigationProps<>> {
       {}
     );
 
-  render(): React.Node {
-    const { renderItem, onPress, groupBy } = this;
+  getCategoriesData = (categories, allData) => {
+    const processed = [];
+    const result = [];
+    for (let category of categories) {
+      for (let career of allData[category]) {
+        if (career.category.type == category && !result.includes(category)) {
+          result.push(career.category);
+          break;
+        }
+      }
+    }
+    return result;
+  };
+
+  componentDidMount() {
     const { navigation } = this.props;
     console.log(navigation.getParam('data'));
     const careers = navigation.getParam('data');
-    const groupedCareers = groupBy(careers, career => career.category.type);
+    const groupedCareers = this.groupBy(
+      careers,
+      career => career.category.type
+    );
+    const data = this.getCategoriesData(
+      Object.keys(groupedCareers),
+      groupedCareers
+    );
     console.log(groupedCareers);
-    const data = FoodAPI.categories;
-    const title = 'Carreras';
+    console.log(data);
+    this.setState({ data, groupedCareers });
+  }
+
+  render(): React.Node {
+    const { renderItem, onPress, groupBy, getCategoriesData } = this;
+    const { navigation } = this.props;
+    const { data } = this.state;
+    const title = 'Grado Académico';
     const rightAction = {
       icon: 'arrow-left',
       onPress

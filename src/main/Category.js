@@ -13,18 +13,21 @@ export default class CategoryComp extends React.Component<
 > {
   renderItem = (career: Career): React.Node => {
     const { navigation } = this.props;
-    const { categoryId } = navigation.state.params;
     const description = `${career.years} ${
       career.years > 1 ? 'años' : 'año'
     } · ${career.credits} créditos`;
+    const picture = {
+      uri: career.picture.image.url
+    };
     return (
       <Card
         height={250}
         onPress={() =>
-          navigation.navigate('Career', { categoryId, recipeId: career.id })
+          navigation.navigate('Career', { career })
         }
         {...{ description }}
         {...career}
+        picture={picture}
       />
     );
   };
@@ -32,12 +35,10 @@ export default class CategoryComp extends React.Component<
   render(): React.Node {
     const { renderItem } = this;
     const { navigation } = this.props;
-    const { categoryId } = navigation.state.params;
-    const data = FoodAPI.careers[categoryId];
-    const { title } = FoodAPI.categories.filter(
-      category => category.id === categoryId
-    )[0];
-    const back = 'Carreras';
-    return <Feed {...{ data, renderItem, title, navigation, back }} />;
+    const { careers } = navigation.state.params;
+    console.log(careers);
+    const data = careers;
+    const title = 'Carreras';
+    return <Feed {...{ data, renderItem, title, navigation }} />;
   }
 }
