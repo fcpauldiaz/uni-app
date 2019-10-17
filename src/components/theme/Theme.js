@@ -31,7 +31,8 @@ export type Theme = {
 export const Colors: { [name: ThemeName]: ThemeColors } = {
   Career: {
     primary: '#005aae',
-    secondary: '#effae5'
+    secondary: '#effae5',
+    whatsapp: '#25D366'
   }
 };
 
@@ -57,6 +58,7 @@ export default class ThemeProvider extends React.Component<
       palette: {
         primary: '#00A5FF',
         secondary: '#e3f7ff',
+        whatsapp: '#25D366',
         ...styleGuide.palette
       },
       typography: { ...styleGuide.typography },

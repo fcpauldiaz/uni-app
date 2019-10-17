@@ -43,13 +43,12 @@ export default class Career extends React.Component<
     const category = career.category;
     const years = `${career.years} ${career.years > 1 ? 'años' : 'año'}`;
     const credits = `${career.credits} créditos`;
+    const picture = {
+      uri: career.picture.image.url
+    };
     return (
       <Container>
-        <Header
-          title={career.title}
-          picture={career.picture.image.url}
-          heightRatio={0.5}
-        >
+        <Header title={career.title} picture={picture} heightRatio={0.5}>
           <NavigationBar
             type="transparent"
             back={category.title}
@@ -98,6 +97,16 @@ export default class Career extends React.Component<
               primary
               label="Solicitar más información en Facebook"
               onPress={() => Linking.openURL(career.fb_page)}
+            />
+            <Button
+              whatsapp
+              visible={career.whatsapp !== ''}
+              label="Solicitar más información en Whatsapp"
+              onPress={() =>
+                Linking.openURL(
+                  `whatsapp://send?text=¿Me podrian mandar mas informacion sobre ${career.name}&phone=${career.whatsapp}`
+                )
+              }
             />
           </View>
         </ActionSheet>

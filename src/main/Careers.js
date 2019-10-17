@@ -65,7 +65,6 @@ export default class Careers extends React.Component<NavigationProps<>> {
 
   componentDidMount() {
     const { navigation } = this.props;
-    console.log(navigation.getParam('data'));
     const careers = navigation.getParam('data');
     const groupedCareers = this.groupBy(
       careers,
@@ -75,8 +74,6 @@ export default class Careers extends React.Component<NavigationProps<>> {
       Object.keys(groupedCareers),
       groupedCareers
     );
-    console.log(groupedCareers);
-    console.log(data);
     this.setState({ data, groupedCareers });
   }
 

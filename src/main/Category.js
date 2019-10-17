@@ -36,7 +36,6 @@ export default class CategoryComp extends React.Component<
     const { renderItem } = this;
     const { navigation } = this.props;
     const { careers } = navigation.state.params;
-    console.log(careers);
     const data = careers;
     const title = 'Carreras';
     return <Feed {...{ data, renderItem, title, navigation }} />;

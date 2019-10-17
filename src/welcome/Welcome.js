@@ -3,6 +3,7 @@ import React, { useEffect } from 'react';
 import { ScrollView, StyleSheet, View, Image, StatusBar } from 'react-native';
 import { Dimensions } from 'react-native';
 import { API_URL } from 'react-native-dotenv';
+import { Schools } from './Schools';
 import {
   ThemeProvider,
   Colors,
@@ -13,8 +14,6 @@ import {
   StateContext
 } from '../components';
 
-import Kit from './Kit';
-
 import type { ThemeName } from '../components/theme';
 import type { NavigationProps } from '../components/Navigation';
 import { useStateValue } from '../components/Context';
@@ -22,7 +21,7 @@ import { useStateValue } from '../components/Context';
 const images = require('./images');
 const window = Dimensions.get('window');
 
-function Welcome(props) {
+function Welcome({ navigation }) {
   const [{ schools }, dispatch] = useStateValue();
 
   //useEffect to call API
@@ -38,14 +37,6 @@ function Welcome(props) {
       .catch(e => console.log(e));
   }, []);
 
-  const navigate = (themeName: ThemeName, careers) => {
-    const { navigation } = props;
-    const themeProvider = ThemeProvider.getInstance();
-    themeProvider.switchColors(Colors[themeName]);
-    navigation.navigate('Careers', { data: careers })
-  };
-
-
   return (
     <React.Fragment>
       <StatusBar
@@ -57,8 +48,7 @@ function Welcome(props) {
         <SafeAreaView style={styles.safeHeader} top>
           <View style={styles.header}>
             <View>
-              <Text type="footnote">Mundo UNI
-              </Text>
+              <Text type="footnote">Mundo UNI</Text>
               <Text type="title1">Universidad InterNaciones</Text>
             </View>
             <Image source={Images.logo} style={styles.logo} />
@@ -67,18 +57,9 @@ function Welcome(props) {
         <ScrollView contentContainerStyle={styles.content}>
           <SafeAreaView>
             <StateContext.Consumer>
-              {([{ schools = [] }]) =>
-                schools.map(school => (
-                  <Kit
-                    key={school.id}
-                    uri={school.picture.image.url}
-                    title={school.title}
-                    careers={school.careers}
-                    backgroundColor={Colors.Career.primary}
-                    onPress={() => navigate('Career', school.careers)}
-                  />
-                ))
-              }
+              {([{ schools = [] }]) => (
+                <Schools schools={schools} navigation={navigation} />
+              )}
             </StateContext.Consumer>
           </SafeAreaView>
         </ScrollView>

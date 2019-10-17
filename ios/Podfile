@@ -40,6 +40,10 @@ target 'RNUpdateRepo' do
   pod 'GoogleMaps'
   pod 'Google-Maps-iOS-Utils'
 
+  pod 'lottie-react-native', :path => '../node_modules/lottie-react-native'
+
+  pod 'lottie-ios', :path => '../node_modules/lottie-ios'
+
   target 'RNUpdateRepoTests' do
     inherit! :search_paths
   end

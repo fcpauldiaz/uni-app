@@ -15,6 +15,7 @@ type ButtonProps = ThemeProps & StyleProps & {
     label?: string,
     icon?: IconName,
     disabled?: boolean,
+    visible?: boolean,
     primaryTextColor?: boolean
 };
 
@@ -22,8 +23,9 @@ class Button extends React.PureComponent<ButtonProps> {
 
     render(): React.Node {
         const {
-            onPress, style, label, icon, primary, secondary, theme, primaryTextColor, disabled
+            onPress, style, label, icon, primary, secondary, theme, primaryTextColor, disabled, visible = true, whatsapp
         } = this.props;
+        if (visible === false) return;
         const opacity = disabled ? 0.5 : 1;
         let color: string;
         let backgroundColor: string;
@@ -31,6 +33,8 @@ class Button extends React.PureComponent<ButtonProps> {
             backgroundColor = theme.palette.primary;
         } else if (secondary) {
             backgroundColor = theme.palette.secondary;
+        } else if (whatsapp) {
+            backgroundColor = theme.palette.whatsapp;
         } else {
             backgroundColor = "transparent";
         }
@@ -40,6 +44,8 @@ class Button extends React.PureComponent<ButtonProps> {
             color = theme.palette.primary;
         } else if (primaryTextColor) {
             color = theme.palette.primary;
+        } else if (whatsapp) {
+            color = 'white';
         } else {
             color = StyleGuide.palette.darkGray;
         }
