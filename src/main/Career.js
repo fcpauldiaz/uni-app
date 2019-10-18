@@ -104,7 +104,7 @@ export default class Career extends React.Component<
               label="Solicitar más información en Whatsapp"
               onPress={() =>
                 Linking.openURL(
-                  `whatsapp://send?text=¿Me podrian mandar mas informacion sobre ${career.name}&phone=${career.whatsapp}`
+                  `whatsapp://send?text=¿Me podrian mandar mas informacion sobre ${career.title}&phone=${career.whatsapp}`
                 )
               }
             />
