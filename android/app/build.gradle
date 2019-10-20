@@ -190,7 +190,8 @@ dependencies {
       implementation jscFlavor
     }
     addUnimodulesDependencies([exclude: ['expo-face-detector', 'expo-location', 'expo-sqlite', 'unimodules-barcode-scanner-interface',
-        'unimodules-camera-interface', 'unimodules-face-detector-interface', 'unimodules-sensors-interface'
+        'unimodules-camera-interface', 'unimodules-face-detector-interface', 'unimodules-sensors-interface', 'expo-web-browser',
+        'expo-keep-awake'
     ]])
 }
 

@@ -29,7 +29,11 @@ target 'RNUpdateRepo' do
   pod 'glog', :podspec => '../node_modules/react-native/third-party-podspecs/glog.podspec'
   pod 'Folly', :podspec => '../node_modules/react-native/third-party-podspecs/Folly.podspec'
 
-  use_unimodules!
+  use_unimodules!(exclude: ['expo-face-detector', 'expo-location', 
+  'expo-sqlite', 'unimodules-barcode-scanner-interface','unimodules-camera-interface',
+  'unimodules-face-detector-interface', 'unimodules-sensors-interface', 'expo-web-browser', 
+  'expo-keep-awake'
+])
 
   pod 'RNGestureHandler', :path => '../node_modules/react-native-gesture-handler'
 

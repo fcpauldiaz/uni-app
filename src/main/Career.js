@@ -16,7 +16,6 @@ import {
 } from '../components';
 import { Linking, TextInput, Share } from 'react-native';
 
-import FoodAPI from './api';
 import { Info, Step } from '../components/detail';
 import Visit from './Visit';
 
@@ -28,14 +27,6 @@ export default class Career extends React.Component<
 > {
   // TODO: use createRef()
   additionalInfoList: ActionSheet;
-  state = {
-    email: 'Correo Electrónico'
-  }
-  onChangeText = (email) => {
-    this.setState({ email });
-  }
-
-
 
   render(): React.Node {
     const { navigation } = this.props;

@@ -32,12 +32,22 @@ export default class CategoryComp extends React.Component<
     );
   };
 
+  onPress = () => {
+    const { navigation } = this.props;
+    const { careers } = navigation.state.params;
+    navigation.navigate('Careers', { data: careers });
+  };
+
   render(): React.Node {
-    const { renderItem } = this;
+    const { renderItem, onPress} = this;
     const { navigation } = this.props;
     const { careers } = navigation.state.params;
     const data = careers;
     const title = 'Carreras';
-    return <Feed {...{ data, renderItem, title, navigation }} />;
+    const rightAction = {
+      icon: 'arrow-left',
+      onPress
+    };
+    return <Feed {...{ data, renderItem, title, navigation, rightAction }} />;
   }
 }

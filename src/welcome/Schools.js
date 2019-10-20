@@ -18,7 +18,7 @@ export const Schools = ({ schools, navigation }) => {
         visible={true}
         overlayColor="rgba(255,255,255,0.75)"
         source={require('../../assets/loader.json')}
-        animationStyle={styles.lottie}
+        animationStyle={styles.loader}
         speed={1}
       />
     );
@@ -38,7 +38,7 @@ export const Schools = ({ schools, navigation }) => {
 
 const styles = StyleSheet.create({
   loader: {
-    width: 50,
-    height: 50
+    width: 200,
+    height: 200
   }
 });
