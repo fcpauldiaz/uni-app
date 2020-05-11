@@ -4,6 +4,7 @@ import { ScrollView, StyleSheet, View, Image, StatusBar } from 'react-native';
 import { Dimensions } from 'react-native';
 import { API_URL } from 'react-native-dotenv';
 import { Schools } from './Schools';
+import PushController from './PushController';
 import {
   ThemeProvider,
   Colors,
@@ -18,7 +19,6 @@ import type { ThemeName } from '../components/theme';
 import type { NavigationProps } from '../components/Navigation';
 import { useStateValue } from '../components/Context';
 
-const images = require('./images');
 const window = Dimensions.get('window');
 
 function Welcome({ navigation }) {
@@ -63,6 +63,7 @@ function Welcome({ navigation }) {
             </StateContext.Consumer>
           </SafeAreaView>
         </ScrollView>
+        <PushController navigation={navigation}/>
       </View>
     </React.Fragment>
   );

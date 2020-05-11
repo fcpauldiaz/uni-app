@@ -48,6 +48,8 @@ target 'RNUpdateRepo' do
 
   pod 'lottie-ios', :path => '../node_modules/lottie-ios'
 
+  pod 'RNCPushNotificationIOS', :path => '../node_modules/@react-native-community/push-notification-ios'
+
   target 'RNUpdateRepoTests' do
     inherit! :search_paths
   end

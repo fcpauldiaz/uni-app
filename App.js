@@ -12,7 +12,7 @@ import {
   StateProvider
 } from './src/components';
 
-import { Welcome } from './src/welcome';
+import { Welcome, PushContainer } from './src/welcome';
 import { CareerNavigator } from './src/main';
 
 // $FlowFixMe
@@ -90,7 +90,8 @@ export default class App extends React.Component<AppProps, AppState> {
 
 const MainNavigator = createSwitchNavigator({
   Welcome: { screen: Welcome },
-  Career: { screen: CareerNavigator }
+  Career: { screen: CareerNavigator },
+  PushContainer: { screen: PushContainer }
 });
 
 const AppNavigator = createAppContainer(MainNavigator);

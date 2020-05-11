@@ -3,7 +3,6 @@ import * as React from 'react';
 
 import { Card, Feed } from '../components';
 
-import FoodAPI from './api';
 import type { Category } from '../components/detail/Model';
 
 import type { NavigationProps } from '../components';

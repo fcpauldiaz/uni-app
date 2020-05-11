@@ -1,4 +1,4 @@
-package com.rnupdaterepo.generated;
+package com.chapilabs.uni.generated;
 
 import java.util.Arrays;
 import java.util.List;

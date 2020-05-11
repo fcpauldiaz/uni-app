@@ -119,8 +119,27 @@ def jscFlavor = 'org.webkit:android-jsc:+'
 def enableHermes = project.ext.react.get("enableHermes", true);
 
 android {
+    signingConfigs {
+    debug {
+        storeFile file('/Users/fcpauldiaz/Documents/react/uni-updated-app/android/keystore')
+        storePassword 'chapilabs'
+        keyAlias = 'key0'
+        keyPassword 'chapilabs'
+    }
+    release {
+        if (project.hasProperty('MYAPP_UPLOAD_STORE_FILE')) {
+            storeFile file(MYAPP_UPLOAD_STORE_FILE)
+            storePassword MYAPP_UPLOAD_STORE_PASSWORD
+            keyAlias MYAPP_UPLOAD_KEY_ALIAS
+            keyPassword MYAPP_UPLOAD_KEY_PASSWORD
+        }
+    }
+    }
     compileSdkVersion rootProject.ext.compileSdkVersion
     buildToolsVersion rootProject.ext.buildToolsVersion
+    dexOptions {
+        javaMaxHeapSize "2048M"
+    }
 
     defaultConfig {
         applicationId "com.chapilabs.uni"
@@ -143,6 +162,8 @@ android {
             // see https://facebook.github.io/react-native/docs/signed-apk-android.
             minifyEnabled enableProguardInReleaseBuilds
             proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
+            //debuggable true
+            //signingConfig signingConfigs.release
         }
     }
     // applicationVariants are e.g. debug, release
@@ -173,8 +194,10 @@ android {
 }
 
 dependencies {
+    implementation project(':react-native-push-notification')
     implementation project(':lottie-react-native')
     implementation project(':react-native-maps')
+    implementation 'com.google.firebase:firebase-analytics:17.2.0'
     //implementation project(':react-native-share')
     //implementation project(':rn-fetch-blob')
     implementation project(':react-native-reanimated')
@@ -182,6 +205,7 @@ dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
     implementation "com.android.support:appcompat-v7:${rootProject.ext.supportLibVersion}"
     implementation "com.facebook.react:react-native:+"  // From node_modules
+    implementation "com.google.firebase:firebase-messaging:20.0.0"
     if (enableHermes) {
       def hermesPath = "../../node_modules/hermesvm/android/";
       debugImplementation files(hermesPath + "hermes-debug.aar")
@@ -202,3 +226,4 @@ task copyDownloadableDepsToLibs(type: Copy) {
     into 'libs'
 }
 apply from: file("../../node_modules/@react-native-community/cli-platform-android/native_modules.gradle"); applyNativeModulesAppBuildGradle(project)
+apply plugin: 'com.google.gms.google-services'

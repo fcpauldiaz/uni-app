@@ -1,4 +1,4 @@
-package com.rnupdaterepo;
+package com.chapilabs.uni;
 
 import com.facebook.react.ReactActivity;
 import com.facebook.react.ReactActivityDelegate;
