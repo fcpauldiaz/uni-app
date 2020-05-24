@@ -16,7 +16,7 @@ export default class CategoryComp extends React.Component<
       career.years > 1 ? 'años' : 'año'
     } · ${career.credits} créditos`;
     const picture = {
-      uri: career.picture.image.url
+      uri: career.picture[0] ? career.picture[0].url : undefined,
     };
     return (
       <Card
@@ -34,6 +34,7 @@ export default class CategoryComp extends React.Component<
   onPress = () => {
     const { navigation } = this.props;
     const { careers } = navigation.state.params;
+    console.log(careers);
     navigation.navigate('Careers', { data: careers });
   };
 

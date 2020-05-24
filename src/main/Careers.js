@@ -1,22 +1,22 @@
 // @flow
-import * as React from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 
 import { Card, Feed } from '../components';
 
 import type { Category } from '../components/detail/Model';
 
 import type { NavigationProps } from '../components';
+import { StateContext } from '../components/Context';
 
-export default class Careers extends React.Component<NavigationProps<>> {
-  state = {
-    data: [],
-    groupedCareers: {}
-  };
+function Careers(props) {
+  const [data, setData] = useState([]);
+  const [groupedCareers, setGroupedData] = useState({});
+  const globalState = useContext(StateContext);
 
-  renderItem = (category: Category): React.Node => {
-    const { navigation } = this.props;
+  const renderItem = (category: Category): React.Node => {
+    const { navigation } = props;
     const picture = {
-      uri: category.picture.image.url
+      uri: category.picture[0] ? category.picture[0].url : undefined,
     };
     return (
       <Card
@@ -24,67 +24,64 @@ export default class Careers extends React.Component<NavigationProps<>> {
         picture={picture}
         onPress={() =>
           navigation.navigate('Category', {
-            careers: this.state.groupedCareers[category.type]
+            careers: groupedCareers[category.type],
           })
         }
       />
     );
   };
 
-  onPress = () => {
-    const { navigation } = this.props;
+  const onPress = () => {
+    const { navigation } = props;
     navigation.navigate('Welcome');
   };
 
-  groupBy = (items, keyGetterFunction) =>
+  const groupBy = (items, keyGetterFunction) =>
     items.reduce(
       (result, item) => ({
         ...result,
         [keyGetterFunction(item)]: [
           ...(result[keyGetterFunction(item)] || []),
-          item
-        ]
+          item,
+        ],
       }),
       {}
     );
 
-  getCategoriesData = (categories, allData) => {
+  const getCategoriesData = (categories, allData) => {
     const processed = [];
     const result = [];
     for (let category of categories) {
-      for (let career of allData[category]) {
-        if (career.category.type == category && !result.includes(category)) {
-          result.push(career.category);
-          break;
+      if (allData[category.type]) {
+        for (let career of allData[category.type]) {
+          if (career.type == category.type && !result.includes(category.type)) {
+            result.push(category);
+            break;
+          }
         }
       }
     }
     return result;
   };
-
-  componentDidMount() {
-    const { navigation } = this.props;
+  // componentDidMount
+  useEffect(() => {
+    const { navigation } = props;
     const careers = navigation.getParam('data');
-    const groupedCareers = this.groupBy(
-      careers,
-      career => career.category.type
-    );
-    const data = this.getCategoriesData(
-      Object.keys(groupedCareers),
-      groupedCareers
-    );
-    this.setState({ data, groupedCareers });
-  }
+    const [contextData] = globalState;
+    const categories = contextData.categories;
+    const groupedCareers = groupBy(careers, (career) => career.type);
+    const data = getCategoriesData(categories, groupedCareers);
+    setData(data);
+    setGroupedData(groupedCareers);
+  }, []);
 
-  render(): React.Node {
-    const { renderItem, onPress, groupBy, getCategoriesData } = this;
-    const { navigation } = this.props;
-    const { data } = this.state;
-    const title = 'Grado Académico';
-    const rightAction = {
-      icon: 'arrow-left',
-      onPress
-    };
-    return <Feed {...{ data, renderItem, title, navigation, rightAction }} />;
-  }
+  const { navigation } = props;
+  const title = 'Grado Académico';
+  const rightAction = {
+    icon: 'arrow-left',
+    onPress,
+  };
+  return <Feed {...{ data, renderItem, title, navigation, rightAction }} />;
 }
+
+export default Careers;

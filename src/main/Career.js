@@ -35,7 +35,7 @@ export default class Career extends React.Component<
     const years = `${career.years} ${career.years > 1 ? 'años' : 'año'}`;
     const credits = `${career.credits} créditos`;
     const picture = {
-      uri: career.picture.image.url
+      uri: career.picture[0] ? career.picture[0].url : undefined,
     };
     return (
       <Container>

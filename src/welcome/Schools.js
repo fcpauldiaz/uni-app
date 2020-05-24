@@ -27,7 +27,7 @@ export const Schools = ({ schools, navigation }) => {
   return schools.map(school => (
     <Kit
       key={school.id}
-      uri={school.picture.image.url}
+      uri={school.picture[0] ? school.picture[0].url: undefined}
       title={school.title}
       careers={school.careers}
       backgroundColor={Colors.Career.primary}

@@ -138,15 +138,15 @@ android {
     compileSdkVersion rootProject.ext.compileSdkVersion
     buildToolsVersion rootProject.ext.buildToolsVersion
     dexOptions {
-        javaMaxHeapSize "2048M"
+        javaMaxHeapSize "4096M"
     }
 
     defaultConfig {
         applicationId "com.chapilabs.uni"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 1
-        versionName "1.0"
+        versionCode 2
+        versionName "1.1"
     }
     splits {
         abi {

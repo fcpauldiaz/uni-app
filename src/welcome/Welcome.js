@@ -12,7 +12,7 @@ import {
   Images,
   Text,
   SafeAreaView,
-  StateContext
+  StateContext,
 } from '../components';
 
 import type { ThemeName } from '../components/theme';
@@ -27,14 +27,25 @@ function Welcome({ navigation }) {
   //useEffect to call API
   useEffect(() => {
     fetch(`${API_URL}/schools`)
-      .then(response => response.json())
-      .then(response => {
+      .then((response) => response.json())
+      .then((response) => {
+        console.log(response);
         dispatch({
-          type: 'setState',
-          schools: response
+          type: 'setSchools',
+          schools: response,
         });
       })
-      .catch(e => console.log(e));
+      .catch((e) => console.log(e));
+    fetch(`${API_URL}/categories`)
+      .then((response) => response.json())
+      .then((response) => {
+        console.log(response);
+        dispatch({
+          type: 'setCategories',
+          categories: response,
+        });
+      })
+      .catch((e) => console.log(e));
   }, []);
 
   return (
@@ -63,7 +74,7 @@ function Welcome({ navigation }) {
             </StateContext.Consumer>
           </SafeAreaView>
         </ScrollView>
-        <PushController navigation={navigation}/>
+        <PushController navigation={navigation} />
       </View>
     </React.Fragment>
   );
@@ -71,25 +82,25 @@ function Welcome({ navigation }) {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1
+    flex: 1,
   },
   safeHeader: {
-    ...StyleGuide.styles.shadow
+    ...StyleGuide.styles.shadow,
   },
   header: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
     padding: StyleGuide.spacing.small,
-    width: window.width - 60
+    width: window.width - 60,
   },
   logo: {
     width: 50,
-    height: 50
+    height: 50,
   },
   content: {
-    paddingVertical: StyleGuide.spacing.small
-  }
+    paddingVertical: StyleGuide.spacing.small,
+  },
 });
 
 export default Welcome;
