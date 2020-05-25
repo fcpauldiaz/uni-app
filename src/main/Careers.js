@@ -63,18 +63,30 @@ function Careers(props) {
     }
     return result;
   };
+  const joinCategoriesWithCareers = (careers, categories) => {
+    const result = [];
+    for (let career of careers) {
+      for (let category of categories) {
+        if (category.type == career.type) {
+          career.category = category;
+        }
+      }
+      result.push(career);
+    }
+    return result;
+  };
   // componentDidMount
   useEffect(() => {
     const { navigation } = props;
     const careers = navigation.getParam('data');
     const [contextData] = globalState;
     const categories = contextData.categories;
-    const groupedCareers = groupBy(careers, (career) => career.type);
+    const joined = joinCategoriesWithCareers(careers, categories);
+    const groupedCareers = groupBy(joined, (career) => career.type);
     const data = getCategoriesData(categories, groupedCareers);
     setData(data);
     setGroupedData(groupedCareers);
   }, []);
-
   const { navigation } = props;
   const title = 'Grado Académico';
   const rightAction = {

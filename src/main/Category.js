@@ -34,7 +34,6 @@ export default class CategoryComp extends React.Component<
   onPress = () => {
     const { navigation } = this.props;
     const { careers } = navigation.state.params;
-    console.log(careers);
     navigation.navigate('Careers', { data: careers });
   };
 
