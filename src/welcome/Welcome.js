@@ -29,7 +29,6 @@ function Welcome({ navigation }) {
     fetch(`${API_URL}/schools`)
       .then((response) => response.json())
       .then((response) => {
-        console.log(response);
         dispatch({
           type: 'setSchools',
           schools: response,
@@ -39,7 +38,6 @@ function Welcome({ navigation }) {
     fetch(`${API_URL}/categories`)
       .then((response) => response.json())
       .then((response) => {
-        console.log(response);
         dispatch({
           type: 'setCategories',
           categories: response,

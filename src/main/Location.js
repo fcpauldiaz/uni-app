@@ -35,10 +35,6 @@ export default class RestaurantComp extends React.Component<
     const { ratings, title, picture, coordinate, description } = location;
     const details = [
       {
-        comp: <Ratings {...{ ratings }} />,
-        caption: `${location.reviews} reviews`
-      },
-      {
         icon: 'time',
         caption: `${location.openings.from} - ${location.openings.to}`
       }

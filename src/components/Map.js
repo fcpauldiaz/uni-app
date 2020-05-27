@@ -21,7 +21,7 @@ type MapProps = ThemeProps & {
 class Map extends React.Component<MapProps> {
   static defaultProps = {
     markers: [],
-    height: 320,
+    height: 330,
   };
 
   // TODO: use createRef()

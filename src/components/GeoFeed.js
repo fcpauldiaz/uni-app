@@ -117,7 +117,7 @@ const styles = StyleSheet.create({
   },
   item: {
     position: 'relative',
-    top: -100
+    top: 0
   }
 });
 
